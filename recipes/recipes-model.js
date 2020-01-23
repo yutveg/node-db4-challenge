@@ -18,9 +18,6 @@ function getShoppingList(id) {
 
 function getInstructions(id) {
   return db("recipes")
-    .select("*")
-    .where({ id })
-    .then(res => {
-      console.log(res);
-    });
+    .select("recipes.instructions")
+    .where({ id });
 }
