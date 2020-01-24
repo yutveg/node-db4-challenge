@@ -11,7 +11,12 @@ router.get("/", (req, res) => {
   });
 });
 
-router.get("/:id/ingredients", (req, res) => {});
+router.get("/:id/ingredients", (req, res) => {
+  Data.getShoppingList(req.params.id).then(result => {
+    if (result) res.status(200).json(result);
+    else res.status(500).json({ error: "God help us.." });
+  });
+});
 
 router.get("/:id/instructions", (req, res) => {
   Data.getInstructions(req.params.id).then(result => {
